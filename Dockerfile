@@ -36,9 +36,6 @@ RUN mkdir /etc/apache2/ssl && \
     cd /etc/apache2/ssl && \
     openssl req -new -newkey rsa:2048 -days 3650 -nodes -x509 -keyout cert.key -out cert.pem -subj "/C=ES/ST=CyL/L=Valladolid/O=FM/OU=IT Department/CN="
 
-#Create webdav user for keeweb
-RUN htpasswd -cb /etc/apache2/.htpasswd ${APP_WEBDAV_USER_NAME} ${APP_WEBDAV_PASSWORD}
-
 #Deploy KeeWeb
 RUN cd /var/www/html && \
     rm -fr * && \
@@ -54,9 +51,6 @@ RUN cd /var/www/html/ && \
 COPY files/${APP_KDBX_FILE} /var/www/html/webdav
 
 COPY files/config.json /var/www/html/config.json
-RUN sed -i "s/KDBX_FILE/${APP_KDBX_FILE}/" /var/www/html/config.json && \
-    sed -i "s/WEBDAV_USER/${APP_WEBDAV_USER_NAME}/" /var/www/html/config.json && \
-    sed -i "s/WEBDAV_PASSWORD/${APP_WEBDAV_PASSWORD}/" /var/www/html/config.json
 
 RUN chown -R www-data:www-data /var/www/html
 

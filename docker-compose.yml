@@ -11,6 +11,10 @@ services:
     ports:
       - "8080:80"
       - "8443:443"
+    environment:
+      - EXTERNAL_URL=http://localhost
+      - PAGE_TITLE="My Vault Page"
+      - SERVER_FQDN=localhost
     #volumes:
       #- ./certs/cert.pem:/etc/apache2/ssl/cert.pem
       #- ./certs/cert.key:/etc/apache2/ssl/cert.key

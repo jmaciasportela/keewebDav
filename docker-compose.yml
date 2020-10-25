@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  keeweb:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: keeweb
+    image: keeweb_container
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+      - "8443:443"
+    #volumes:
+      #- ./certs/cert.pem:/etc/apache2/ssl/cert.pem
+      #- ./certs/cert.key:/etc/apache2/ssl/cert.key
+      #- ./config.json:/var/www/html/config.json
+      #- ./db.kdbx:/var/www/html/webdav/db.kdbx

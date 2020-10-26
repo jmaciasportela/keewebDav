@@ -83,7 +83,7 @@ docker-compose build
 Add this line to your crontab and adjust the interval to have new backups.
 
 ```
-00 0    * * *   root    docker cp keeweb:/var/www/html/webdav/fm-db.kdbx /opt/keeweb_backup/fm-db-$(date +\%Y\%m\%d\%H\%M\%S).kbdx
+00 0    * * *   root    docker cp keeweb:/var/www/html/webdav/it-db.kdbx /opt/keeweb_backup/it-db-$(date +\%Y\%m\%d\%H\%M\%S).kbdx
 ```
 
 Should have another mechanism to backup the files on /opt/keeweb_backup folder to other external system.
